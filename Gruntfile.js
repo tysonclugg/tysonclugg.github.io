@@ -137,9 +137,9 @@ module.exports = function(grunt) {
 		buildGhPages: {
 			options: {
 				// Task-specific options go here.
-			},
-			your_target: {
-				// Target-specific file lists and/or options go here.
+                build_branch: "gh-pages",
+                dist: "dist",
+                exclude: ['node_modules', '.tmp', '.sass-cache', 'app/bower_components'],
 			},
 		},
 
@@ -180,5 +180,7 @@ module.exports = function(grunt) {
 
 	// Run tests
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
+
+    grunt.registerTask( 'deploy', [ 'default', 'buildGhPages' ] );
 
 };
