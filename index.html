@@ -1,7 +1,233 @@
-<!DOCTYPE html>
-<html>
-<head><title>Tyson Clugg</title></head>
-<body>
-<h1>Hello, World!</h1>
-</body>
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Django DDP</title>
+
+		<meta name="description" content="Django DDP">
+		<meta name="author" content="Tyson Clugg">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<link rel="stylesheet" href="css/custom.css">
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                <section class="bgtext bgtiny bgright" data-bgtext="&quot;Wooooo!&quot; &mdash; Daryl">
+					<h1>Django DDP</h1>
+					<h3>Realtime Django backend for Meteor</h3>
+					<p>
+						<small>Created by <a href="http://github.com/tysonclugg">Tyson Clugg</a> / <a href="http://twitter.com/tysonclugg">@tysonclugg</a></small>
+                        <small><a href="#cube"></a> <a href="https://github.com/commoncode/django-ddp">github.com/commoncode/django-ddp</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Motivations</h2>
+					<p>I like Django, but it isn't realtime.</p>
+					<p>Meteor is realtime, but it's schemaless &mdash; ugh!</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section class="bgtext" data-bgtext="🙊">
+						<h2>Django DDP recap</h2>
+                        <p>You missed/forgot my last Django DDP talk at MelbMeteor?</p>
+                        <p class="fragment"><em>Oh well...</em> 😉</p>
+					</section>
+					<section>
+                        <h2>Django DDP Basics</h2>
+                        <ul>
+                            <li>Implements a <em>DDP server</em>, like Meteor.</li>
+                            <li><em>Replaces Meteor server</em> &mdash; not running Node!</li>
+                            <li>Allows clients (browsers) to subscribe to <em>publications</em>.</li>
+                            <li>Pushes Django model updates in <em>realtime</em> via <em>WebSockets</em>.</li>
+                            <li>RPC method calls and responses.</li>
+                        </ul>
+					</section>
+					<section>
+                        <h2>Django DDP Limitations</h2>
+                        <ul>
+                            <li>Doesn't serve Meteor client files... <em>yet</em>.</li>
+                            <li>Immature &mdash; research in progress!</li>
+                            <li>PostgreSQL only &mdash; this is a <em>Good Thing&trade;</em></li>
+                        </ul>
+					</section>
+					<section>
+                        <h2>Why not schemaless?</h2>
+                        <p>No schema means no consistency, resulting in bugs.</p>
+                        <p>No referential integreity results in more bugs.</p>
+                        <p>No transactions across collections &mdash; even more bugs!</p>
+                        <p>PostgreSQL provides schemaless anyway (hstore, JSON).</p>
+					</section>
+					<section>
+                        <h2>Why PostgreSQL?</h2>
+                        <p><a href="http://www.aptuz.com/blog/is-postgres-nosql-database-better-than-mongodb/">Is Postgres NoSQL Better Than MongoDB?</a></p>
+                        <img class="fragment" src="http://www.aptuz.com/static/media/uploads/blog/.thumbnails/mongodb_26_v_postgres_94_performance.png/mongodb_26_v_postgres_94_performance-657x511.png">
+                        <p class="fragment">You bet it is!</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>High performance Python</h2>
+                        <p><a href="http://www.python.org/">Python</a> with <a href="http://www.gevent.org/">gevent</a> for concurrency.</p>
+                        <ul>
+                            <li><em>Fast event loop</em> based on <a href="http://livev.schmorp.de/">libev</a>.</li>
+                            <li><em>Lightweight execution units</em> based on <a href="https://pypi.python.org/pypi/greenlet">greenlet</a>.</li>
+                            <li>Code for django-ddp doesn't look strange (at least to Python devs).</li>
+                            <li>Did I mention it's <em>really FAST?!?</em></li>
+					</section>
+					<section>
+						<h2>ddptest.meteor.com</h2>
+                        <p>Meteor first...</p>
+						<br>
+                        <img width="762" height="430" data-src="images/meteor.png" alt="Meteor DDP test">
+					</section>
+					<section>
+						<h2>ddptest.meteor.com</h2>
+                        <p>...now Django DDP</p>
+						<br>
+                        <img width="762" height="430" data-src="images/django-ddp.png" alt="Django-DDP DDP test">
+					</section>
+				</section>
+
+                <section>
+                    <h2>Asynchronous Notify</h2>
+                    <ul>
+                        <li>
+                            Already a part of the Django/PostgreSQL stack
+                            <ul>
+                                <li>Unless you're a MySQL weenie 😛</li>
+                                <li>No new services/infrastructure to be deployed! 😄</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            Extended SQL syntax:
+                            <ul>
+                                <li>NOTIFY &lt;channel&gt;, [optional payload];</li>
+                                <li>LISTEN &lt;channel&gt;;</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">
+                            Works with transactions
+                            <ul>
+                                <li>Notification is sent after transaction is successfully committed</li>
+                                <li>Notification is not sent if transaction is rolled back</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+				<section>
+                    <section class="bgtext bgtiny" data-bgtext="Tyson, are you really sure this is a good idea?">
+                        <h2>Demo time!</h2>
+                    </section>
+                    <section>
+                        <p></p>
+                    </section>
+                    <section>
+                        <p>(Applause!)</p>
+                    </section>
+				</section>
+
+				<section>
+                    <h2>Key learnings: Meteor</h2>
+                    <ul>
+                        <li class="fragment">Synchronised document ID generation is awesome! (latency compensation)</li>
+                        <li class="fragment">Meteor password hashing sucks.</li>
+                        <li class="fragment"><em>Autopublish</em> & <em>insecure</em> are dangerous.  Meteor defaults help you shoot yourself in the foot.</li>
+                    </ul>
+					</p>
+				</section>
+
+				<section>
+					<h2>Key learnings: Python/Django</h2>
+                    <ul>
+                        <li class="fragment">WebSocket support in Django is woeful (doesn't exist!)</li>
+                        <li class="fragment">Adding packages to Django projects sucks (nothing like `meteor add foo`)</li>
+                    </ul>
+				</section>
+
+				<section>
+					<h2>Acknowledgements</h2>
+                    <dl>
+                        <dt><a href="http://meerqat.com.au/">MEERQAT</a></dt>
+                    <dd>Project sponsor - many thanks for allowing this to be released as open source!</dd>
+                    <dt><a href="https://github.com/dburles">David Burles</a></dt>
+                    <dd>Expert guidance on how DDP works in Meteor.</dd>
+                    <dt><a href="https://github.com/sesh">Brenton Cleeland</a></dt>
+                    <dd>Great conversations around how collections and publications can limit visibility of published documents to specific users.</dd>
+                    <dt><a href="https://github.com/mnmtanish">Muhammed Thanish</a></dt>
+                    <dd>Making the <a href="https://github.com/meteorhacks/ddptest">DDP Test Suite</a> available.</dd>
+                    </dl>
+				</section>
+
+				<section>
+					<h2>Question time</h2>
+                    <p><br><br>
+						github.com/commoncode/django-ddp
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
 </html>
