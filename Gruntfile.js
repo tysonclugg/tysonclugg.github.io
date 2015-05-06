@@ -134,14 +134,12 @@ module.exports = function(grunt) {
             }
 		},
 
-		buildGhPages: {
-            ghPages: {
+		'gh-pages': {
+            'gh-pages': {
                 options: {
-                    // Task-specific options go here.
-                    build_branch: "gh-pages",
-                    dist: "dist",
-                    exclude: ['node_modules', '.tmp', '.sass-cache', 'app/bower_components'],
+                    base: ".",
                 },
+                src: ['index.html'],
 			},
 		},
 
@@ -157,7 +155,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 	grunt.loadNpmTasks( 'grunt-autoprefixer' );
 	grunt.loadNpmTasks( 'grunt-zip' );
-	grunt.loadNpmTasks( 'grunt-build-gh-pages' );
+	grunt.loadNpmTasks( 'grunt-gh-pages' );
 
 	// Default task
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
@@ -184,8 +182,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
 
     grunt.registerTask( 'deploy', [
-        'default',
-        'buildGhPages:ghPages',
+        'buildGhPages:gh-pages',
     ] );
 
 };
