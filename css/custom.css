@@ -18,7 +18,7 @@
 }
 
 #logo {
-	background: url(../img/common-code-logo.svg) top right no-repeat;
+	background: url(../images/common-code-logo.svg) top right no-repeat;
 	position: absolute;
 	top: 3%;
 	right: 3%;
@@ -36,7 +36,7 @@ img.cube {
 	display: inline-block;
 	width: 1em;
 	height: 1em;
-	background: url(../img/cube.svg) bottom no-repeat;
+	background: url(../images/cube.svg) bottom no-repeat;
 	margin: 0 0.7ex;
 	background-size: contain;
 }
@@ -62,7 +62,7 @@ img.cube {
 	display: inline-block;
 	width: 1em;
 	height: 1em;
-	background: url(../img/cube.svg) bottom no-repeat;
+	background: url(../images/cube.svg) bottom no-repeat;
 	/* margin: 0 0.7ex; */
 	background-size: contain;
 	position: absolute;
