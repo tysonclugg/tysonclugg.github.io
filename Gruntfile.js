@@ -132,7 +132,16 @@ module.exports = function(grunt) {
             html: {
                 files: [ 'index.html']
             }
-		}
+		},
+
+		buildGhPages: {
+			options: {
+				// Task-specific options go here.
+			},
+			your_target: {
+				// Target-specific file lists and/or options go here.
+			},
+		},
 
 	});
 
@@ -146,6 +155,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 	grunt.loadNpmTasks( 'grunt-autoprefixer' );
 	grunt.loadNpmTasks( 'grunt-zip' );
+	grunt.loadNpmTasks( 'grunt-build-gh-pages' );
 
 	// Default task
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
