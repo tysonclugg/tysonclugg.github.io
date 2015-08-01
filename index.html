@@ -41,108 +41,159 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-                <section class="bgtext bgtiny bgright" data-bgtext="&quot;Wooooo!&quot; &mdash; Daryl">
+
+                <section>
 					<h1>Django DDP</h1>
-					<h3>Realtime Django backend for Meteor</h3>
+					<h3>Realtime Django backend<br>for Meteor</h3>
+					<br>
 					<p>
-						<small>Created by <a href="http://github.com/tysonclugg">Tyson Clugg</a> / <a href="http://twitter.com/tysonclugg">@tysonclugg</a></small>
-                        <small><a href="#cube"></a> <a href="https://github.com/commoncode/django-ddp">github.com/commoncode/django-ddp</a></small>
+						Created by <a href="http://github.com/tysonclugg">Tyson Clugg</a> / <a href="http://twitter.com/tysonclugg">@tysonclugg</a>
+					</p>
+                    <p><a href="#cube"></a></p>
+                    <p>
+                    	<a href="https://github.com/commoncode/django-ddp">github.com/commoncode/django-ddp</a>
 					</p>
 				</section>
 
 				<section>
-					<h2>Motivations</h2>
-					<p>I like Django, but it isn't realtime.</p>
-					<p>Meteor is realtime, but it's schemaless &mdash; ugh!</p>
+					<h2>About me</h2>
+					<p class="fragment current-visible">I support the planet by using public transport<br> and living within reasonable means.</p>
+					<p class="fragment current-visible">I support humanity by funding the<br> <a href="http://www.unhcr.org/">United Nations Refugee Agency</a>.</p>
+					<p class="fragment current-visible">I started using <a href="https://www.postgresql.org/">PostgreSQL</a> in 1999.</p> 
+					<p class="fragment current-visible"><a href="https://github.com/funkybob/">Funkybob</a> has been my Django<br> mentor since January 2007.</p>
 				</section>
 
-				<!-- Example of nested vertical slides -->
 				<section>
-					<section class="bgtext" data-bgtext="🙊">
-						<h2>Django DDP recap</h2>
-                        <p>You missed/forgot my last Django DDP talk at MelbMeteor?</p>
-                        <p class="fragment"><em>Oh well...</em> 😉</p>
-					</section>
-					<section>
-                        <h2>Django DDP Basics</h2>
-                        <ul>
-                            <li>Implements a <em>DDP server</em>, like Meteor.</li>
-                            <li><em>Replaces Meteor server</em> &mdash; not running Node!</li>
-                            <li>Allows clients (browsers) to subscribe to <em>publications</em>.</li>
-                            <li>Pushes Django model updates in <em>realtime</em> via <em>WebSockets</em>.</li>
-                            <li>RPC method calls and responses.</li>
-                        </ul>
-					</section>
-					<section>
-                        <h2>Django DDP Limitations</h2>
-                        <ul>
-                            <li>Doesn't serve Meteor client files... <em>yet</em>.</li>
-                            <li>Immature &mdash; research in progress!</li>
-                            <li>PostgreSQL only &mdash; this is a <em>Good Thing&trade;</em></li>
-                        </ul>
-					</section>
-					<section>
-                        <h2>Why not schemaless?</h2>
-                        <p>No schema means no consistency, resulting in bugs.</p>
-                        <p>No referential integreity results in more bugs.</p>
-                        <p>No transactions across collections &mdash; even more bugs!</p>
-                        <p>PostgreSQL provides schemaless anyway (hstore, JSON).</p>
-					</section>
-					<section>
-                        <h2>Why PostgreSQL?</h2>
-                        <p><a href="http://www.aptuz.com/blog/is-postgres-nosql-database-better-than-mongodb/">Is Postgres NoSQL Better Than MongoDB?</a></p>
-                        <img class="fragment" src="http://www.aptuz.com/static/media/uploads/blog/.thumbnails/mongodb_26_v_postgres_94_performance.png/mongodb_26_v_postgres_94_performance-657x511.png">
-                        <p class="fragment">You bet it is!</p>
-					</section>
+					<h2>Motivations</h2>
+					<p class="fragment current-visible">Meteor is realtime, but it's not Python.</p>
+					<p class="fragment current-visible">Meteor uses MongoDB - eww!</p>
+					<p class="fragment current-visible">Meteor has <em>latency compensation</em>!</p>
+					<p class="fragment current-visible">Meteor can be used to write iOS and Android apps.</p>
 				</section>
+
 				<section>
-					<section>
-						<h2>High performance Python</h2>
-                        <p><a href="http://www.python.org/">Python</a> with <a href="http://www.gevent.org/">gevent</a> for concurrency.</p>
-                        <ul>
-                            <li><em>Fast event loop</em> based on <a href="http://livev.schmorp.de/">libev</a>.</li>
-                            <li><em>Lightweight execution units</em> based on <a href="https://pypi.python.org/pypi/greenlet">greenlet</a>.</li>
-                            <li>Code for django-ddp doesn't look strange (at least to Python devs).</li>
-                            <li>Did I mention it's <em>really FAST?!?</em></li>
-					</section>
-					<section>
-						<h2>ddptest.meteor.com</h2>
-                        <p>Meteor first...</p>
-						<br>
-                        <img width="762" height="430" data-src="images/meteor.png" alt="Meteor DDP test">
-					</section>
-					<section>
-						<h2>ddptest.meteor.com</h2>
-                        <p>...now Django DDP</p>
-						<br>
-                        <img width="762" height="430" data-src="images/django-ddp.png" alt="Django-DDP DDP test">
-					</section>
+                    <h2>Why not schemaless?</h2>
+                    <p class="fragment">No schema means no consistency, resulting in bugs.</p>
+                    <p class="fragment">No referential integrity results in more bugs.</p>
+                    <p class="fragment">No transactions across collections &mdash; even more bugs!</p>
+                    <p class="fragment">PostgreSQL provides schemaless anyway (hstore, jsonb).</p>
+				</section>
+				
+				<section>
+                    <h2>Why not schemaless? (part 2)</h2>
+                    <p><a href="http://www.aptuz.com/blog/is-postgres-nosql-database-better-than-mongodb/">Is PostgreSQL Better Than MongoDB?</a></p>
+                    <img class="fragment" style="max-height:400px" src="images/mongo-postgres.png">
+                    <p class="fragment">You bet it is!</p>
+				</section>
+
+				<section class="bgtext" data-bgtext="🙊">
+					<h2>Meteor</h2>
+                    <img class="noborder stretch " src="images/meteor-platform.png" />
+                    <p class="fragment"><em>Django DDP</em> lets you use Django below the line.</p>
+				</section>
+
+				<section>
+                <h2>Django DDP Basics</h2>
+                    <p class="fragment">Implements a <em>DDP server</em>, like Meteor.</p>
+                    <p class="fragment"><em>Replaces Meteor server</em> &mdash; not running Node!</p>
+                    <p class="fragment">Allows clients (browser/app) to subscribe to <em>publications</em>.</p>
+                    <p class="fragment">Pushes Django model updates in <em>realtime</em> via <em>WebSockets</em>.</p>
+                    <p class="fragment">Latency compensated RPC method calls and responses. </p>
+				</section>
+
+				<section>
+                    <h2>Django DDP Limitations</h2>
+                    <p class="fragment">Relatively immature &mdash; <em>LiveQuery</em> is work in progress.</p>
+                    <p class="fragment">PostgreSQL only &mdash; this is a <em>Good Thing&trade;</em>. </p>
+                    <p class="fragment">Relies on Django signals. </p>
+                    <p class="fragment" style="text-decoration: line-through">Doesn't serve Meteor client files.</p>
+				</section>
+
+				<section>
+					<h2>Realtime +<br>Latency Compensation</h2>
+					<p>The client view will update:</p>
+					<ul>
+					<li class="fragment">
+						Within milliseconds after data is updated and subsequently dispatched from the server.
+					</li>
+					<li class="fragment">
+						<em>Immediately</em> as client interactions take place.
+						<ul>
+							<li class="fragment">If the server doesn't the updated client data, the view state is <em>rolled back</em>.</li>
+						</ul>
+					</li>
+					</ul>
+				</section>
+ 
+				<section>
+					<h2>High performance Python</h2>
+                    <p class="fragment " ><a href="http://www.python.org/">Python</a> with <a href="http://www.gevent.org/">gevent</a> for concurrency.</p>
+                    <p class="fragment current-visible"><em>Fast event loop</em> based on <a href="http://livev.schmorp.de/">libev</a>.</p>
+                    <p class="fragment current-visible"><em>Lightweight execution units</em> based on <a href="https://pypi.python.org/pypi/greenlet">greenlet</a>.</p>
+                    <p class="fragment current-visible">No callbacks, promises or other fluff (red code vs.  green code).</p>
+                    <p class="fragment current-visible">Did I mention it's <em>really FAST?!?</em></p>
+				</section>
+
+				<section>
+					<h2>ddptest.meteor.com</h2>
+                    <p>Meteor first...</p>
+					<img class="fragment" width="762" height="430" data-src="images/meteor.png" alt="Meteor DDP test">
+				</section>
+
+				<section>
+					<h2>ddptest.meteor.com</h2>
+                    <p>...now Django DDP</p>
+					<br>
+                    <img class="fragment" width="762" height="430" data-src="images/django-ddp.png" alt="Django-DDP DDP test">
 				</section>
 
                 <section>
                     <h2>Asynchronous Notify</h2>
                     <ul>
-                        <li>
+                        <li class="fragment">
                             Already a part of the Django/PostgreSQL stack
                             <ul>
-                                <li>Unless you're a MySQL weenie 😛</li>
-                                <li>No new services/infrastructure to be deployed! 😄</li>
+                                <li class="fragment">Unless you're a MySQL weenie 😛</li>
+                                <li class="fragment">No new services/infrastructure to be deployed.</li>
                             </ul>
                         </li>
+                    </ul>
+                </section>
+                <section data-background="images/wait-what.jpg" data-background-size="100%" data-background-transition="fast">
+                </section>
+                <section>
+                	<h2>No new infrastructure!</h2>
+                	<p class="fragment">No Crossbar.io!</p>
+                	<p class="fragment">No Redis!</p>
+                </section>
+                <section data-background="images/hulk-happy.jpg" data-background-size="90%">
+                	<h2>Just Django + PostgreSQL</h2>
+                	<p class="stretch">&nbsp;</p>
+                </section>
+                <section>
+                	<h2>Using LISTEN/NOTIFY</h2>
+                    <ul>
                         <li class="fragment">
                             Extended SQL syntax:
                             <ul>
-                                <li>NOTIFY &lt;channel&gt;, [optional payload];</li>
-                                <li>LISTEN &lt;channel&gt;;</li>
+                                <li class="fragment">NOTIFY &lt;channel&gt;, [optional payload];</li>
+                                <li class="fragment">LISTEN &lt;channel&gt;;</li>
                             </ul>
                         </li>
+                    </ul> 
+                </section>
+
+                <section>
+                	<h2>The beauty of NOTIFY</h2>
+                    <ul>
                         <li class="fragment">
                             Works with transactions
                             <ul>
-                                <li>Notification is sent after transaction is successfully committed</li>
-                                <li>Notification is not sent if transaction is rolled back</li>
+                                <li class="fragment">Notifications are sent after transactions are successfully committed.</li>
+                                <li class="fragment">Notifications are discarded when transactions are rolled back.</li>
                             </ul>
                         </li>
+                        <li class="fragment">No gymnastics to handle error conditions!</li>
                     </ul>
                 </section>
 
@@ -150,8 +201,8 @@
                     <section class="bgtext bgtiny" data-bgtext="Tyson, are you really sure this is a good idea?">
                         <h2>Demo time!</h2>
                     </section>
-                    <section>
-                        <p></p>
+                    <section data-background="#000">
+                        <iframe class="stretch" src="https://meerqat.commoncode.com.au/dashboard"></iframe>
                     </section>
                     <section>
                         <p>(Applause!)</p>
@@ -162,7 +213,7 @@
                     <h2>Key learnings: Meteor</h2>
                     <ul>
                         <li class="fragment">Synchronised document ID generation is awesome! (latency compensation)</li>
-                        <li class="fragment">Meteor password hashing sucks.</li>
+                        <li class="fragment">Meteor password hashing sucks - use tysonclugg:accounts-secure.</li>
                         <li class="fragment"><em>Autopublish</em> & <em>insecure</em> are dangerous.  Meteor defaults help you shoot yourself in the foot.</li>
                     </ul>
 					</p>
@@ -171,32 +222,61 @@
 				<section>
 					<h2>Key learnings: Python/Django</h2>
                     <ul>
-                        <li class="fragment">WebSocket support in Django is woeful (doesn't exist!)</li>
+                        <li class="fragment">WebSocket support in Django is woeful (doesn't exist... yet)</li>
                         <li class="fragment">Adding packages to Django projects sucks (nothing like `meteor add foo`)</li>
                     </ul>
 				</section>
 
 				<section>
-					<h2>Acknowledgements</h2>
-                    <dl>
-                        <dt><a href="http://meerqat.com.au/">MEERQAT</a></dt>
-                    <dd>Project sponsor - many thanks for allowing this to be released as open source!</dd>
-                    <dt><a href="https://github.com/dburles">David Burles</a></dt>
-                    <dd>Expert guidance on how DDP works in Meteor.</dd>
-                    <dt><a href="https://github.com/sesh">Brenton Cleeland</a></dt>
-                    <dd>Great conversations around how collections and publications can limit visibility of published documents to specific users.</dd>
-                    <dt><a href="https://github.com/mnmtanish">Muhammed Thanish</a></dt>
-                    <dd>Making the <a href="https://github.com/meteorhacks/ddptest">DDP Test Suite</a> available.</dd>
-                    </dl>
-				</section>
+					<section>
+						<h2>Acknowledgments</h2>
+					</section>
 
-				<section>
-					<h2>Question time</h2>
-                    <p><br><br>
-						github.com/commoncode/django-ddp
-					</p>
-				</section>
+					<section>
+						<h2>MEERQAT</h2>
+						<p>
+							<img src="images/meerqat.png" alt="MEERQAT Quality Assessment Tools - Assess your organisation using the power of collaborative group discussion">
+							<br>
+							<a href="https://meerqat.com.au/">meerqat.com.au</a>
+							<br>
+							Project sponsor - many thanks for allowing<br> django-ddp to be released as  open source!
+						</p>
+					</section>
+					<section>
+	                    <dl>
+	                    <dt class="fragment">
+	                    	<img src="images/dburles.png" class="badge" style="float:left; padding: 0.2em; vertical-align:center; top: -0.7em; position: relative">
+	                    	<a href="https://github.com/dburles">David Burles</a>
+                    	</dt>
+                    	<dd class="fragment">
+                    		Expert guidance on how DDP works in Meteor.<br>
+	                    	<br>
+                		</dd>
+	                    <dt class="fragment" style="clear:both">
+	                    	<img src="images/sesh.png" class="badge" style="float:left; padding: 0.2em; vertical-align:center; top: -0.7em; position: relative">
+	                    	<a href="https://github.com/sesh">Brenton Cleeland</a>
+	                    </dt>
+	                    <dd class="fragment">
+	                    	Discussions on security model for publications.<br>
+	                    	<br>
+	                    </dd>
+	                    <dt class="fragment" style="clear:both">
+	                    	<img src="images/mnmtanish.png" class="badge" style="float:left; padding: 0.2em; vertical-align:center; top: -0.7em; position: relative">
+	                    	<a href="https://github.com/mnmtanish">Muhammed Thanish</a>
+                    	</dt>
+                    	<dd class="fragment">
+                    		Making the <a href="https://github.com/meteorhacks/ddptest">DDP Test Suite</a> available.
+                    	</dd>
+	                    </dl>
+					</section>
 
+					<section>
+						<h2>Question time</h2>
+	                    <p><br><br><br><br><br><br><br><br><br>
+							<a href="https://github.com/commoncode/django-ddp">github.com/commoncode/django-ddp</a>
+						</p>
+					</section>
+				</section>
 			</div>
 
 		</div>
@@ -209,6 +289,14 @@
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
+				width: 1024,
+				height: 768,
+				margin: 0.1,
+				parallaxBackgroundImage: "images/melb.jpg",
+				parallaxBackgroundSize: '3648px 1120px',
+				parallaxBackgroundHorizontal: 200,
+				parallaxBackgroundVertical: 50,
+				hideAddressBar: true,
 				controls: true,
 				progress: true,
 				history: true,
