@@ -1,16 +1,167 @@
+body {
+	background: white url(../images/bg-pattern.png);
+}
+
+.reveal pre {
+
+    font-size: 45%;
+    padding: 0.5rem;
+}
+
+.reveal section a {
+	text-transform: none;
+}
+
+.reveal .sparkly {
+	color: #222;
+	background: url(../images/sparkly-pretty-pretty.png) no-repeat bottom, url(../images/small-bottom-grad.png) repeat-x bottom;
+	background-size: auto, auto;
+	margin-left: -100%;
+	margin-right: -100%;
+	width: 300%;
+	margin-top: -342px;
+	padding-top: 342px;
+}
+.reveal .sparkly::after {
+	content: ' ';
+	position: absolute;
+	display: block;
+	height: 3px;
+	overflow: hidden;
+	left: 0;
+	background: url(../images/small-bottom-grad.png) repeat-x bottom;
+	width: 300%;
+	margin-left: -100%;
+	margin-right: -100%;
+}
+
+.reveal h2 {
+	font-size: 1.8em;
+	line-height: 1.2em;
+	margin-bottom: 1.2em
+}
+
+.reveal h3 {
+	font-size: 1.8em;
+	line-height: 1.0em;
+}
+
+.reveal p {
+	line-height: 1.5em;
+}
+
+.reveal ol,
+.reveal ul {
+	display: block;
+	margin: 1em 0 1.2em 3em;
+}
+
+.bright {
+	/*color: #32beed;*/
+}
+
+.reveal ul li {
+	/*xcolor: #32beed;*/
+}
+
+.reveal ul ul {
+	list-style-type: square;
+}
+
+.reveal ul li > ul {
+	margin-top: 20px;
+}
+
+.reveal ul ul ul {
+	list-style-type: circle;
+}
+
+#logo {
+	background: url(../images/common-code-logo.svg) top right no-repeat;
+	position: absolute;
+	top: 3%;
+	right: 3%;
+	width: 17%;
+	height: 7%;
+}
+
+.reveal .pink {
+	color: #EA178E;
+}
+
+.reveal .smaller {
+	font-size: 70%;
+	color: #333;
+}
+
+.reveal section img {
+	border: none;
+	box-shadow: none;
+	background: none;
+}
+img.badge {
+	height: 3em;
+	margin: 0.3em;
+}
+img.cube {
+	height: 0.8em;
+}
+.dude::after {
+	content: ' ';
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	background: url(../images/cube.svg) bottom no-repeat;
+	margin: 0 0.7ex;
+	background-size: contain;
+}
+
+.reveal a[href='#cube']:hover {
+	color: transparent;
+}
+.reveal a[href='#cube'] {
+	color: transparent;
+	display: inline-block;
+	width: 1.8em;
+	overflow: hidden;
+	text-indent: -1em;
+	height: 1em;
+	text-align: right;
+	position: relative;
+	cursor: default;
+	text-shadow: none;
+}
+.reveal a[href='#cube']::after {
+	color: red;
+	content: ' ';
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	background: url(../images/cube.svg) bottom no-repeat;
+	/* margin: 0 0.7ex; */
+	background-size: contain;
+	position: absolute;
+	top: 0;
+	left: 0.4em;
+}
+
 .bgtext:after {
     content: attr(data-bgtext) " ";
     position: absolute;
     bottom: -1.5em;
     left: 0;
     font-size: 400%;
-    opacity: 0.07;
+    opacity: 0.4;
     z-index: -1;
 }
 
 .bgright:after {
     left: auto;
     right: 0;
+}
+
+.bgsmall:after {
+    font-size: 120%;
 }
 
 .bgtiny:after {
